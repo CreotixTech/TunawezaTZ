@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - TunawezaTZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5BFF;
+            --secondary: #FF6B35;
+            --accent: #00C9A7;
+            --dark: #2D3748;
+            --light: #F8F9FA;
+            --gray: #718096;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-cta {
+            background-color: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .nav-cta:hover {
+            background-color: #1a46e0;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #2D5BFF 0%, #1a46e0 100%);
+            color: var(--white);
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        /* Volunteer Intro */
+        .volunteer-intro {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .intro-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        /* Opportunities Section */
+        .opportunities {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .opportunities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .opportunity-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .opportunity-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .opportunity-icon {
+            height: 180px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+        }
+        
+        .opportunity-info {
+            padding: 25px;
+        }
+        
+        .opportunity-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .opportunity-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .opportunity-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .opportunity-meta i {
+            margin-right: 5px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #1a46e0;
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(45, 91, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Volunteer Process */
+        .volunteer-process {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            counter-reset: step-counter;
+        }
+        
+        .process-step {
+            background-color: var(--light);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            counter-increment: step-counter;
+        }
+        
+        .process-step:before {
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .process-step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Volunteer Stories */
+        .volunteer-stories {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .story-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .story-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .story-text:before {
+            content: """;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+        }
+        
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .author-role {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--gray);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #e05a1a 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .btn-white {
+            background-color: var(--white);
+            color: var(--secondary);
+        }
+        
+        .btn-white:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline-white {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline-white:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 968px) {
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .btn-outline-white {
+                margin-left: 0;
+            }
+            
+            .opportunity-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">TunawezaTZ</div>
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Impact</a></li>
+                    <li><a href="#">Get Involved</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="nav-cta">Donate</a></li>
+                </ul>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Volunteer With Us</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Get Involved</a></li>
+                <li><a href="#">Volunteer</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Volunteer Intro -->
+    <section class="volunteer-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Make a Difference Through Volunteering</h2>
+                <p>Join our community of dedicated volunteers who are empowering Tanzanian youth through technology education. Your skills, time, and passion can help transform lives and create lasting impact in our community.</p>
+                <p>Whether you're a tech expert, educator, mentor, or simply someone who wants to make a difference, we have opportunities that match your skills and interests.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section class="opportunities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Volunteer Opportunities</h2>
+                <p>Find the perfect way to contribute your skills and time</p>
+            </div>
+            <div class="opportunities-grid">
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Teaching Assistant</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> 4-8 hours/week</span>
+                            <span><i class="fas fa-map-marker-alt"></i> On-site</span>
+                        </div>
+                        <p>Support our instructors in digital skills classes, help students with exercises, and provide one-on-one assistance to those who need extra help.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Tech Mentor</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> 2-6 hours/week</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Hybrid</span>
+                        </div>
+                        <p>Guide students through tech projects, provide career advice, and share your industry experience to help prepare them for tech careers.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Community Outreach</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> 3-5 hours/week</span>
+                            <span><i class="fas fa-map-marker-alt"></i> On-site</span>
+                        </div>
+                        <p>Help us connect with local communities, organize events, and spread awareness about our programs and opportunities.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Virtual Tutor</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> 2-4 hours/week</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        </div>
+                        <p>Provide online tutoring and support to students learning digital skills, regardless of your location.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Content Creator</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> Flexible hours</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        </div>
+                        <p>Help develop educational materials, blog posts, social media content, and other resources for our programs.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="opportunity-info">
+                        <h3>Technical Support</h3>
+                        <div class="opportunity-meta">
+                            <span><i class="far fa-clock"></i> 3-6 hours/week</span>
+                            <span><i class="fas fa-map-marker-alt"></i> On-site</span>
+                        </div>
+                        <p>Maintain our computer lab, troubleshoot technical issues, and help ensure our equipment is running smoothly.</p>
+                        <a href="#" class="btn btn-primary">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Process -->
+    <section class="volunteer-process">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Become a Volunteer</h2>
+                <p>Our simple process to get you started</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Application</h3>
+                    <p>Fill out our volunteer application form with your details, skills, and interests.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Interview</h3>
+                    <p>We'll schedule a conversation to learn more about you and discuss opportunities.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-training"></i>
+                    </div>
+                    <h3>Orientation</h3>
+                    <p>Attend a volunteer orientation session to learn about our programs and policies.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Start Volunteering</h3>
+                    <p>Begin making a difference with guidance from our team and ongoing support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefits of Volunteering</h2>
+                <p>What you gain from volunteering with us</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Networking</h3>
+                    <p>Connect with professionals in the tech industry and community development sector.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Skill Development</h3>
+                    <p>Gain valuable experience and enhance your CV with meaningful volunteer work.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Personal Fulfillment</h3>
+                    <p>Experience the joy of making a tangible difference in young people's lives.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>Cultural Exchange</h3>
+                    <p>Learn about Tanzanian culture while sharing your own experiences and knowledge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Stories -->
+    <section class="volunteer-stories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Volunteer Stories</h2>
+                <p>Hear from those who have volunteered with us</p>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <p class="story-text">"Volunteering as a coding instructor at TunawezaTZ was one of the most rewarding experiences of my life. Seeing my students land their first tech jobs made all the effort worthwhile."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">DJ</div>
+                        <div class="author-info">
+                            <h4>David Johnson</h4>
+                            <p class="author-role">Software Developer Volunteer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p class="story-text">"I volunteered remotely as a mentor, and despite the distance, I formed genuine connections with my students. The team at TunawezaTZ provides excellent support to volunteers."</p>
+                    <div class="story-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah穆罕默德</h4>
+                            <p class="author-role">Remote Mentor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <p class="story-text">"As a local university student, volunteering helped me develop my teaching skills while giving back to my community. Plus, it looks great on my resume!"</p>
+                    <div class="story-author">
+                        <div class="author-avatar">AJ</div>
+                        <div class="author-info">
+                            <h4>Anna Joseph</h4>
+                            <p class="author-role">Teaching Assistant</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about volunteering</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do I need prior teaching experience to volunteer? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>While teaching experience is helpful, it's not always required. We provide training and support for all our volunteers. What's most important is your passion for our mission and willingness to learn.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What time commitment is expected? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>It varies by role, but most opportunities require 2-8 hours per week. We offer both regular commitments and one-time volunteering opportunities to accommodate different schedules.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I volunteer remotely? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have several remote volunteering opportunities, especially for mentoring, content creation, and virtual tutoring roles.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you accept international volunteers? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we welcome international volunteers, particularly for remote opportunities. For on-site volunteering, we can help with information about visas and accommodation but cannot provide financial support for travel expenses.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Make a Difference?</h2>
+            <p>Join our team of dedicated volunteers and help empower Tanzanian youth through technology education.</p>
+            <a href="#" class="btn btn-white">Apply to Volunteer</a>
+            <a href="#" class="btn btn-outline-white">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TunawezaTZ</h3>
+                    <p>Empowering Tanzanian youth with digital skills and opportunities for a brighter future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">Get Involved</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Volunteer</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Opportunities</a></li>
+                        <li><a href="#">Application Process</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Volunteer Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Pasiansi-Papa Street Block 'A' #66, Mwanza, Tanzania</p>
+                    <p>Email: info@tunawezatz.org</p>
+                    <p>Phone: +255 783 38 68 79</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TunawezaTZ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('show');
+        });
+
+        // FAQ toggle
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

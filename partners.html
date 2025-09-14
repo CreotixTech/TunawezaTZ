@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Partners - TunawezaTZ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D5BFF;
+            --secondary: #FF6B35;
+            --accent: #00C9A7;
+            --dark: #2D3748;
+            --light: #F8F9FA;
+            --gray: #718096;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-cta {
+            background-color: var(--primary);
+            color: var(--white) !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        
+        .nav-cta:hover {
+            background-color: #1a46e0;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #2D5BFF 0%, #1a46e0 100%);
+            color: var(--white);
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 10px;
+        }
+        
+        .breadcrumb li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb li:after {
+            content: '/';
+            margin-left: 10px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: '';
+        }
+        
+        /* Partners Intro */
+        .partners-intro {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .intro-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        /* Partners Grid */
+        .partners {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .partner-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .partner-logo {
+            height: 180px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 120px;
+        }
+        
+        .logo-placeholder {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .partner-info {
+            padding: 25px;
+        }
+        
+        .partner-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .partner-type {
+            display: inline-block;
+            background: var(--light);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Partnership Types */
+        .partnership-types {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .type-card {
+            background-color: var(--light);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .type-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .type-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Impact Section */
+        .impact {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .impact .section-title h2 {
+            color: var(--white);
+        }
+        
+        .impact .section-title h2:after {
+            background-color: var(--white);
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .impact-item {
+            padding: 30px;
+        }
+        
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        
+        .impact-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--secondary) 0%, #e05a1a 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--secondary);
+        }
+        
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 70px 0 30px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 968px) {
+            .intro-content h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">TunawezaTZ</div>
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Programs</a></li>
+                    <li><a href="#">Impact</a></li>
+                    <li><a href="#">Get Involved</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="nav-cta">Donate</a></li>
+                </ul>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Local Partners & Cooperation</h1>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Local Cooperation</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Partners Intro -->
+    <section class="partners-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Collaborating for Impact</h2>
+                <p>At TunawezaTZ, we believe that sustainable community development happens through collaboration. Our local partnerships are the foundation of our work, allowing us to create meaningful impact in the communities we serve.</p>
+                <p>We work with a diverse range of Tanzanian organizations, government agencies, educational institutions, and community groups to deliver programs that address real needs and create lasting change.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Grid -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Local Partners</h2>
+                <p>We're proud to collaborate with these outstanding Tanzanian organizations</p>
+            </div>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-school"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">Education</span>
+                        <h3>Mwanza Education Initiative</h3>
+                        <p>Collaborating on digital literacy programs in secondary schools across the Mwanza region, providing access to technology education for underserved youth.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-building"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">Government</span>
+                        <h3>Mwanza City Council</h3>
+                        <p>Working together on community development initiatives and youth employment programs that align with the city's development strategy.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">NGO</span>
+                        <h3>Tanzania Youth Alliance</h3>
+                        <p>Joint programs focused on youth empowerment, leadership development, and creating pathways to employment for young Tanzanians.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">Business</span>
+                        <h3>Lake Tech Solutions</h3>
+                        <p>Local technology company providing internship opportunities, mentorship, and employment pathways for our program graduates.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">Education</span>
+                        <h3>University of Mwanza</h3>
+                        <p>Academic partnership providing curriculum development support, research collaboration, and access to university facilities for our programs.</p>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-people-carry"></i>
+                        </div>
+                    </div>
+                    <div class="partner-info">
+                        <span class="partner-type">Community</span>
+                        <h3>Nyakato Community Association</h3>
+                        <p>Grassroots collaboration to identify community needs and co-design programs that address local challenges through technology solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Types -->
+    <section class="partnership-types">
+        <div class="container">
+            <div class="section-title">
+                <h2>Types of Partnerships</h2>
+                <p>We offer various collaboration models to suit different organizational goals</p>
+            </div>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Program Partnerships</h3>
+                    <p>Co-design and implementation of educational programs and community initiatives that align with shared goals and objectives.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Employment Partnerships</h3>
+                    <p>Provide internship opportunities, on-the-job training, and employment pathways for our program graduates.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Partnerships</h3>
+                    <p>Collaborate on curriculum development, knowledge sharing, and access to educational resources and facilities.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Community Partnerships</h3>
+                    <p>Work with community organizations to identify needs and develop locally-relevant technology solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Partnership Impact</h2>
+                <p>Together with our partners, we're creating meaningful change</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number">35+</div>
+                    <div class="impact-label">Local Partners</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">15</div>
+                    <div class="impact-label">Communities Served</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">120+</div>
+                    <div class="impact-label">Joint Programs</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">500+</div>
+                    <div class="impact-label">Youth Impacted</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Become a Local Partner</h2>
+            <p>Join us in empowering Tanzanian youth through technology education and creating sustainable impact in our communities.</p>
+            <a href="#" class="btn btn-primary">Partner With Us</a>
+            <a href="#" class="btn btn-secondary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>TunawezaTZ</h3>
+                    <p>Empowering Tanzanian youth with digital skills and opportunities for a brighter future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Programs</a></li>
+                        <li><a href="#">Get Involved</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Skills Training</a></li>
+                        <li><a href="#">Career Development</a></li>
+                        <li><a href="#">Mentorship Program</a></li>
+                        <li><a href="#">Community Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Pasiansi-Papa Street Block 'A' #66, Mwanza, Tanzania</p>
+                    <p>Email: info@tunawezatz.org</p>
+                    <p>Phone: +255 783 38 68 79</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TunawezaTZ. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('menu').classList.toggle('show');
+        });
+    </script>
+</body>
+</html>
